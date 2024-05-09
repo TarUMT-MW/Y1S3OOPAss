@@ -9,13 +9,14 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
-import java.util.List;
-
 
 
 public class DataStorage {
     private static String name, address, memID, phoneNo, icNo, password;
+    private static int accumulatedPoints, currentPoints;
+    
     public static ArrayList<Member> members = new ArrayList<>();
 
     //READ member data from file
@@ -29,9 +30,14 @@ public class DataStorage {
                 phoneNo = read.readLine();
                 icNo = read.readLine();
                 password = read.readLine();
+                accumulatedPoints = parseInt(read.readLine());
+                currentPoints = parseInt(read.readLine());
 
-                Member newMember = new Member(name, address, memID, phoneNo, icNo, password);
-                members.add(newMember);
+                //PointBalance points = new PointBalance(accumulatedPoints, currentPoints);
+                
+                Member member = new Member(name, address, memID, phoneNo, icNo, password, accumulatedPoints, currentPoints);
+                members.add(member);
+                //System.out.println(points);
             }
             read.close();
         }catch (IOException e){
@@ -48,6 +54,8 @@ public class DataStorage {
                 write.write(member.getPhoneNo() + "\n");
                 write.write(member.getIcNo() + "\n");
                 write.write(member.getPassword() + "\n");
+                write.write(member.getPoints().getAccumulatedPoints() + "\n");
+                write.write(member.getPoints().getCurrentPoints() + "\n");
             }
             write.close();
         } catch (IOException e){

@@ -4,6 +4,7 @@
 
 package com.mycompany.pointrewardsystem;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PointRewardSystem {
@@ -17,12 +18,11 @@ public class PointRewardSystem {
         
         Terms terms = new Terms();
         MemAccount acc = new MemAccount();
-        
         DataStorage ds = new DataStorage();
-        
+
         Scanner scanner = new Scanner(System.in);
         
-        System.out.println("WELCOME AND ENJOY OUR SERVICES");
+        System.out.println("\nWELCOME AND ENJOY OUR SERVICES");
         
         do {
             displayHomepage();
@@ -30,7 +30,11 @@ public class PointRewardSystem {
             scanner.nextLine(); // Consume newline character
                 switch (choice) {
                     case 1:
-                        acc.login(); 
+                        String currentUser = acc.login(); 
+                        if (!currentUser.equals("0")){
+                            System.out.println("TEST");
+                            ds.writeFile();
+                        }
                         break;
                     case 2:
                         acc.register();
@@ -39,7 +43,7 @@ public class PointRewardSystem {
                         terms.displayTerms();
                         break;
                     case 4:
-                        System.out.println("Exiting...");
+                        System.out.println("EXITING...");
                         return;
                     default:
                         System.out.println("Invalid choice! Please enter a valid option.");
@@ -52,7 +56,7 @@ public class PointRewardSystem {
     
     //homepage
     public static void displayHomepage() {
-        System.out.println("--------------------------");
+        System.out.println("\n--------------------------");
         System.out.println("[1] Login");
         System.out.println("[2] Register");
         System.out.println("[3] Display Terms");

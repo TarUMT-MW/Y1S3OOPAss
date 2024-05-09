@@ -8,7 +8,9 @@ import java.util.Random;
 
 public class Member {
 	private String name, address, memID, phoneNo, icNo, password;
-	private int totalPoints, points;
+        private int accumulatedPoints, currentPoints;
+	private PointBalance points;
+        
 	private static int numOfMember = 0;
 	
 	public Member() {
@@ -22,19 +24,20 @@ public class Member {
 		this.phoneNo = phoneNo;
 		this.icNo = icNo;
 		this.password = password;
-		points = 0;
+		this.points = new PointBalance(0,0);
 		numOfMember++;
 	}
         
         //for when reading and writting file
-        public Member(String name, String address, String memID, String phoneNo, String icNo, String password) {
+        public Member(String name, String address, String memID, String phoneNo, 
+                String icNo, String password, int accumulatedPoints, int currentPoints) {
 		this.name = name;
 		this.address = address;
 		this.memID = memID;
 		this.phoneNo = phoneNo;
 		this.icNo = icNo;
 		this.password = password;
-		points = 0;
+		this.points = new PointBalance(accumulatedPoints, currentPoints);
 		numOfMember++;
 	}
 	
@@ -73,7 +76,7 @@ public class Member {
 		return numOfMember;
 	}
 	
-	public int getPoints() {
+	public PointBalance getPoints() {
 		return points;
 	}
 
@@ -97,7 +100,7 @@ public class Member {
 		this.icNo = icNo;
 	}
 	
-	public void setPoints(int points) {
+	public void setPoints(PointBalance points) {
 		this.points = points;
 	}
 	
