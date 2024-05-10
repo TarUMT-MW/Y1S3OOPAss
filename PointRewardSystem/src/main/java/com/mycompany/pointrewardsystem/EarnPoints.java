@@ -47,8 +47,8 @@ public class EarnPoints {
             System.out.println("Point Balance: " + currentPoints);
         }
         
-//        members.get(currentMem).getPoints().setAccumulatedPoints(accumulatedPoints);
-//        members.get(currentMem).getPoints().setCurrentPoints(currentPoints);
+        members.get(currentMem).getPoints().setAccumulatedPoints(accumulatedPoints);
+        members.get(currentMem).getPoints().setCurrentPoints(currentPoints);
     }
     
     private boolean validityCheck(String amtSpent){
