@@ -9,15 +9,16 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 
 
+
 public class DataStorage {
-    private static String name, address, memID, phoneNo, icNo, password;
-    private static int accumulatedPoints, currentPoints;
+    private String name, address, memID, phoneNo, icNo, password;
+    private int accumulatedP, currentP;
     
     public static ArrayList<Member> members = new ArrayList<>();
+    
 
     //READ member data from file
     public void readFile(){
@@ -30,12 +31,10 @@ public class DataStorage {
                 phoneNo = read.readLine();
                 icNo = read.readLine();
                 password = read.readLine();
-                accumulatedPoints = parseInt(read.readLine());
-                currentPoints = parseInt(read.readLine());
-
-                //PointBalance points = new PointBalance(accumulatedPoints, currentPoints);
+                accumulatedP = Integer.parseInt(read.readLine());
+                currentP = Integer.parseInt(read.readLine());
                 
-                Member member = new Member(name, address, memID, phoneNo, icNo, password, accumulatedPoints, currentPoints);
+                Member member = new Member(name, address, memID, phoneNo, icNo, password, accumulatedP, currentP);
                 members.add(member);
                 //System.out.println(points);
             }
@@ -46,22 +45,36 @@ public class DataStorage {
     }
     
     public void writeFile(){
+        
         try (BufferedWriter write = new BufferedWriter(new FileWriter("memInfo.txt"))){
-            for (Member member : members){
-                write.write(member.getName() + "\n");
-                write.write(member.getAddress() + "\n");
-                write.write(member.getMemID() + "\n");
-                write.write(member.getPhoneNo() + "\n");
-                write.write(member.getIcNo() + "\n");
-                write.write(member.getPassword() + "\n");
-                write.write(member.getPoints().getAccumulatedPoints() + "\n");
-                write.write(member.getPoints().getCurrentPoints() + "\n");
+            int size = members.size();
+            for (Member member:members){
+            name = member.getName();
+            address = member.getAddress();
+            memID = member.getMemID();
+            phoneNo = member.getPhoneNo();
+            icNo = member.getIcNo();
+            password = member.getPassword();
+            accumulatedP = member.getPoints().accumulatedPoints;
+            currentP = member.getPoints().currentPoints;
+            write.write(name + "\n" + address + "\n" + memID + "\n" + phoneNo + "\n"
+            + icNo + "\n" + password + "\n" + accumulatedP + "\n" + currentP + "\n");
             }
+//            preventDUP();
             write.close();
         } catch (IOException e){
             e.printStackTrace();
         }
+        
     }
+//    ArrayList<Member> temp = new ArrayList<>();
+//    public void preventDUP(){
+//        
+//        temp.clear();
+//        temp.addAll(members);
+//        members.clear();
+//        members.addAll(temp);
+//    }
 
     
     //Constructor

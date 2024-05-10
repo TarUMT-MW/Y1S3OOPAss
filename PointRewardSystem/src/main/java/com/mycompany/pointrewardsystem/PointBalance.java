@@ -6,8 +6,11 @@ package com.mycompany.pointrewardsystem;
 
 public class PointBalance {
     protected int accumulatedPoints, currentPoints;
+    public static final int PREMIUM_THRESHOLD = 5000;
     
-    protected void earnPoints(double spendings){}
+    public int earnPoints(double spendings){
+    return 0;
+    }
     
     //constuctor
     public PointBalance(int accumulatedPoints, int currentPoints) {

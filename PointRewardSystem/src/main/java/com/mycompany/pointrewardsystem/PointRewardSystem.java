@@ -8,43 +8,41 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PointRewardSystem {
-    
+
+    private static Terms terms = new Terms();
+    private static DataStorage ds = new DataStorage();    
+    private static Scanner scanner = new Scanner(System.in);
     
     
     public static void main(String[] args) {
-        
         boolean success = false;
-        int choice;
-        
-        Terms terms = new Terms();
-        MemAccount acc = new MemAccount();
-        DataStorage ds = new DataStorage();
-
-        Scanner scanner = new Scanner(System.in);
-        
+        char choice;
         System.out.println("\nWELCOME AND ENJOY OUR SERVICES");
         
         do {
             displayHomepage();
-            choice = scanner.nextInt();
+           
+            choice = scanner.next().charAt(0);
             scanner.nextLine(); // Consume newline character
+            choice = Character.toLowerCase(choice);
+            
                 switch (choice) {
-                    case 1:
-                        String currentUser = acc.login(); 
-                        if (!currentUser.equals("0")){
-                            System.out.println("TEST");
-                            ds.writeFile();
+                    case 'a':
+                        int currentMem = MemAccount.login(); 
+                        if (currentMem != -1){
+                            selectionUserpage(currentMem);
                         }
                         break;
-                    case 2:
-                        acc.register();
+                    case 'b':
+                        MemAccount.register();
                         break;
-                    case 3:
+                    case 'c':
                         terms.displayTerms();
                         break;
-                    case 4:
-                        System.out.println("EXITING...");
-                        return;
+                    case 'd':
+                        System.out.println("\nEXITING...\n");
+                        success = true;
+                        break;
                     default:
                         System.out.println("Invalid choice! Please enter a valid option.");
                         break;
@@ -56,20 +54,59 @@ public class PointRewardSystem {
     
     //homepage
     public static void displayHomepage() {
-        System.out.println("\n--------------------------");
-        System.out.println("[1] Login");
-        System.out.println("[2] Register");
-        System.out.println("[3] Display Terms");
-        System.out.println("[4] Exit");
-        System.out.print("Please choose: ");
+        System.out.println("------------------------------");
+        System.out.println("[A] Login");
+        System.out.println("[B] Register");
+        System.out.println("[C] Display Terms");
+        System.out.println("[D] Exit Program");
+        System.out.print("Please pick a service: ");
     }
     public static void displayUserpage(){
-        System.out.println("=--------------------------=");
-        System.out.println("[1] Point Balance");
-        System.out.println("[2] Redeem Coupon");
-        System.out.println("[3] Display Terms");
-        System.out.println("[3] Exit");
-        System.out.print("Please choose: ");
+        System.out.println("=------------------------------=");
+        System.out.println("[A] Earn Points");
+        System.out.println("[B] Redeem Coupon");
+        System.out.println("[C] Display Terms");
+        System.out.println("[D] Back");
+        System.out.println("[E] Exit Program");
+        System.out.print("Please pick a service: ");
+    }
+    
+    public static void selectionUserpage(int currentMem){
+        boolean success = false;
+        char choice;
+        do {
+            
+            displayUserpage();
+           
+            choice = scanner.next().charAt(0);
+            scanner.nextLine(); // Consume newline character
+            choice = Character.toLowerCase(choice);
+            
+                switch (choice) {
+                    case 'a':
+                        EarnPoints earnPoints = new EarnPoints();
+                        earnPoints.earning(currentMem);
+                        break;
+                    case 'b':
+                        
+                        //redeem
+                        break;
+                    case 'c':
+                        terms.displayTerms();
+                        break;
+                    case 'd':
+                        System.out.println("\nRETURNING...\n");
+                        success = true;
+                        break;
+                    case 'e':
+                        System.out.println("\nEXITING...\n");
+                        System.exit(0);
+                    default:
+                        System.out.println("Invalid choice! Please enter a valid option.");
+                        break;
+                }
+            ds.writeFile();
+        } while (!success);
     }
 }
         

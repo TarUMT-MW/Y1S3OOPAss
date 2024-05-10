@@ -9,26 +9,24 @@ import java.util.ArrayList;
 
 public class MemAccount {
 
-    private final Scanner scanner = new Scanner(System.in);
-    boolean success = false;
+    private static Scanner scan = new Scanner(System.in);
+    private static boolean success = false;
     int choice;
 
-    DataStorage ds = new DataStorage();
-    ArrayList<Member> members = ds.getMembers();
+    private static DataStorage ds = new DataStorage();
+    private static Member memberData = new Member();
+    private static ArrayList<Member> members = ds.getMembers();
 
     //Register
     //Login
-    public String login() {
-        String login = "0";
+    public static int login() {
+        int login = -1;
 
         ds.readFile();
         do {
             System.out.print("Enter customer membership ID number (press 0 to go back): ");
-            String memID = scanner.nextLine();
+            String memID = scan.nextLine();
 
-//            if (memID.equals("0")) {
-//                return; // Exit login method
-//            }
             if (memID.equals("0")){
                 success = true;
                 //login = false;
@@ -36,24 +34,27 @@ public class MemAccount {
                 boolean validID = isValidID(memID); //check valid ID format
                 boolean found = false;
                 if (validID) {
-
+                    int i = 0;
                     for (Member member : members) {
-
                         if (member.getMemID().equals(memID)) {
                             System.out.print("Enter password: ");
-                            String password = scanner.nextLine();
+                            String password = scan.nextLine();
                             found = true;
 
-                            if (member.getPassword().equalsIgnoreCase(password)) {
+                            if (member.getPassword().equals(password)) {
                                 System.out.println("Log in successful!\n");
-                                System.out.println("\n=--------------------------=");
+                                System.out.println("\n=------------------------------=");
                                 System.out.println("Welcome " + member.getName() + ".");
+                                System.out.println("Current Point Balance: " 
+                                        + member.getPoints().currentPoints + ".");
                                 success = true;
-                                login = memID;
+                                login = i;
+                                break;
                             } else {
                                 System.out.println("Invalid password!");
                             }
                         }
+                        i++;
                     }
                     if (!found) {
                         System.out.println("Invalid membership ID number!");
@@ -67,33 +68,33 @@ public class MemAccount {
         return login;
     }
 
-    public void register() {
+    public static void register() {
         ds.readFile();
         int check = 0;
 
         System.out.print("Enter customer name (press 0 to go back): ");
-        String newName = scanner.nextLine();
+        String newName = scan.nextLine();
         
         if (newName.equals("0")) {
             return; // Exit login method
         }
 
         System.out.print("Enter customer address: ");
-        String newAddress = scanner.nextLine();
+        String newAddress = scan.nextLine();
         
         do {
             System.out.print("Enter customer phone number: ");
-            String newPhoneNo = scanner.nextLine();
+            String newPhoneNo = scan.nextLine();
             boolean validPhone = isValidPhoneNo(newPhoneNo);
             if (validPhone) {
                 do {
                     System.out.print("Enter customer IC number: ");
-                    String newIcNo = scanner.nextLine();
+                    String newIcNo = scan.nextLine();
                     boolean validIC = isValidIC(newIcNo);
                     if (validIC) {
 
                         System.out.print("Enter customer password: ");
-                        String newPassword = scanner.nextLine();
+                        String newPassword = scan.nextLine();
 
                         for (Member member : members) {
 
@@ -122,24 +123,12 @@ public class MemAccount {
                 check = -1;
             }
         } while (check == -1);
-        //Write into file
         ds.writeFile();
     }
 
+    
+    
     //VALIDATIONS FOR MEM ACCOUNT
-//    public static boolean isValidID(String memID){
-//        boolean validity = true;
-//        if (memID.length() == 6){
-//            for (int i = 0; i < 6; i++){
-//                if(!Character.isDigit(memID.charAt(i))){
-//                    validity = false;
-//                    break;
-//                } 
-//            }
-//        } else {validity = false;}
-//        
-//        return validity;
-//    }
     public static boolean isValidID(String memID) {
         if (memID.length() != 6) {
             return false;

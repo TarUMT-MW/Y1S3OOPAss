@@ -4,14 +4,19 @@
  */
 package com.mycompany.pointrewardsystem;
 
+
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Member {
 	private String name, address, memID, phoneNo, icNo, password;
-        private int accumulatedPoints, currentPoints;
+//        private int accumulatedPoints, currentPoints;
 	private PointBalance points;
         
 	private static int numOfMember = 0;
+        
+        private static DataStorage ds = new DataStorage();
+        private static ArrayList<Member> members = ds.getMembers();
 	
 	public Member() {
 		
@@ -48,6 +53,12 @@ public class Member {
 		return memberID;
 	}
 
+        //to allow other classes to read the array of member info from member
+        public static ArrayList<Member> getMembers(){
+        return members;
+        }
+        
+        //getter setter
 	public String getName() {
 		return name;
 	}

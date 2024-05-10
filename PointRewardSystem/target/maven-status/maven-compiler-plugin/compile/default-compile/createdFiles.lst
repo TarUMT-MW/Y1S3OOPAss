@@ -3,6 +3,7 @@ com\mycompany\pointrewardsystem\MemAccount.class
 com\mycompany\pointrewardsystem\Terms.class
 com\mycompany\pointrewardsystem\PointBalance.class
 com\mycompany\pointrewardsystem\PointRewardSystem.class
+com\mycompany\pointrewardsystem\EarnPoints.class
 com\mycompany\pointrewardsystem\NormalBalance.class
 com\mycompany\pointrewardsystem\Member.class
 com\mycompany\pointrewardsystem\DataStorage.class

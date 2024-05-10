@@ -12,9 +12,21 @@ public class NormalBalance extends PointBalance{
     }
     
     @Override 
-    public void earnPoints(double spendings){
+    public int earnPoints(double spendings){
         int earnings = (int) (spendings * POINTS_PER_SPENDINGS);
-        accumulatedPoints += earnings;
-        currentPoints += earnings;
+        return earnings;
+    }
+
+    //getters
+    public static double getPOINTS_PER_SPENDINGS() {
+        return POINTS_PER_SPENDINGS;
+    }
+
+    public int getAccumulatedPoints() {
+        return accumulatedPoints;
+    }
+
+    public int getCurrentPoints() {
+        return currentPoints;
     }
 }
