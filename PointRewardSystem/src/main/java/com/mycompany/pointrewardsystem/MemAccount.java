@@ -22,7 +22,6 @@ public class MemAccount {
     public static int login() {
         int login = -1;
 
-        ds.readFile();
         do {
             System.out.print("Enter customer membership ID number (press 0 to go back): ");
             String memID = scan.nextLine();
@@ -69,7 +68,6 @@ public class MemAccount {
     }
 
     public static void register() {
-        ds.readFile();
         int check = 0;
 
         System.out.print("Enter customer name (press 0 to go back): ");

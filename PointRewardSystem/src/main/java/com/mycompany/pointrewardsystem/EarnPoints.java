@@ -49,6 +49,7 @@ public class EarnPoints {
         
         members.get(currentMem).getPoints().setAccumulatedPoints(accumulatedPoints);
         members.get(currentMem).getPoints().setCurrentPoints(currentPoints);
+        
     }
     
     private boolean validityCheck(String amtSpent){

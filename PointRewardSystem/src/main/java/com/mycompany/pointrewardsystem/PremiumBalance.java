@@ -21,12 +21,4 @@ public class PremiumBalance extends PointBalance{
     public static double getPOINTS_PER_SPENDINGS() {
         return POINTS_PER_SPENDINGS;
     }
-
-    public int getAccumulatedPoints() {
-        return accumulatedPoints;
-    }
-
-    public int getCurrentPoints() {
-        return currentPoints;
-    }
 }

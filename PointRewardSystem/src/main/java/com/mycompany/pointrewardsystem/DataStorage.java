@@ -6,9 +6,11 @@ package com.mycompany.pointrewardsystem;
 
 import java.io.BufferedWriter;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 
@@ -47,7 +49,7 @@ public class DataStorage {
     public void writeFile(){
         
         try (BufferedWriter write = new BufferedWriter(new FileWriter("memInfo.txt"))){
-            int size = members.size();
+            
             for (Member member:members){
             name = member.getName();
             address = member.getAddress();
@@ -60,7 +62,7 @@ public class DataStorage {
             write.write(name + "\n" + address + "\n" + memID + "\n" + phoneNo + "\n"
             + icNo + "\n" + password + "\n" + accumulatedP + "\n" + currentP + "\n");
             }
-//            preventDUP();
+
             write.close();
         } catch (IOException e){
             e.printStackTrace();

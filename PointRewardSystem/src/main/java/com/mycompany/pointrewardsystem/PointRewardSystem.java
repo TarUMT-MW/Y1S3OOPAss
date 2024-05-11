@@ -19,6 +19,7 @@ public class PointRewardSystem {
         char choice;
         System.out.println("\nWELCOME AND ENJOY OUR SERVICES");
         
+        ds.readFile();
         do {
             displayHomepage();
            
