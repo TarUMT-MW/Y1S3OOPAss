@@ -6,11 +6,9 @@ package com.mycompany.pointrewardsystem;
 
 import java.io.BufferedWriter;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 
@@ -38,7 +36,7 @@ public class DataStorage {
                 
                 Member member = new Member(name, address, memID, phoneNo, icNo, password, accumulatedP, currentP);
                 members.add(member);
-                //System.out.println(points);
+                
             }
             read.close();
         }catch (IOException e){
@@ -69,15 +67,6 @@ public class DataStorage {
         }
         
     }
-//    ArrayList<Member> temp = new ArrayList<>();
-//    public void preventDUP(){
-//        
-//        temp.clear();
-//        temp.addAll(members);
-//        members.clear();
-//        members.addAll(temp);
-//    }
-
     
     //Constructor
     public DataStorage(){

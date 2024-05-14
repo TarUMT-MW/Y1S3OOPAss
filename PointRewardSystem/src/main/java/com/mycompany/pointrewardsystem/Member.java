@@ -15,8 +15,7 @@ public class Member {
         
 	private static int numOfMember = 0;
         
-        private static DataStorage ds = new DataStorage();
-        private static ArrayList<Member> members = ds.getMembers();
+        private static ArrayList<Member> members = DataStorage.getMembers();
 	
 	public Member() {
 		

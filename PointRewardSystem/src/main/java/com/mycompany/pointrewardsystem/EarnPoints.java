@@ -9,15 +9,14 @@ import java.util.Scanner;
 
 public class EarnPoints {
     
-    private static Member memberData = new Member();
-    private ArrayList<Member> members = memberData.getMembers(); 
+    private ArrayList<Member> members = Member.getMembers(); 
     private Scanner scanner = new Scanner(System.in);
     private int accumulatedPoints, currentPoints;
     private boolean valid = false;
     
     public void earning(int currentMem){
         String amtSpent;
-        int earnings = 0;
+        int earnings;
         accumulatedPoints = members.get(currentMem).getPoints().getAccumulatedPoints();
         currentPoints = members.get(currentMem).getPoints().getCurrentPoints();
 
@@ -54,7 +53,7 @@ public class EarnPoints {
     
     private boolean validityCheck(String amtSpent){
         try{
-            Double.parseDouble(amtSpent);
+            Double.valueOf(amtSpent);
             return true;
         } catch(NumberFormatException e){
             return false;

@@ -4,7 +4,6 @@
 
 package com.mycompany.pointrewardsystem;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PointRewardSystem {
@@ -38,7 +37,7 @@ public class PointRewardSystem {
                         MemAccount.register();
                         break;
                     case 'c':
-                        terms.displayTerms();
+                        Terms.displayTerms();
                         break;
                     case 'd':
                         System.out.println("\nEXITING...\n");

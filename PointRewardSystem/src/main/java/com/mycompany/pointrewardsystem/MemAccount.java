@@ -26,7 +26,7 @@ public class MemAccount {
             System.out.print("Enter customer membership ID number (press 0 to go back): ");
             String memID = scan.nextLine();
 
-            if (memID.equals("0")){
+            if (memID.equals("0")) {
                 success = true;
                 //login = false;
             } else {
@@ -44,7 +44,7 @@ public class MemAccount {
                                 System.out.println("Log in successful!\n");
                                 System.out.println("\n=------------------------------=");
                                 System.out.println("Welcome " + member.getName() + ".");
-                                System.out.println("Current Point Balance: " 
+                                System.out.println("Current Point Balance: "
                                         + member.getPoints().currentPoints + ".");
                                 success = true;
                                 login = i;
@@ -72,14 +72,14 @@ public class MemAccount {
 
         System.out.print("Enter customer name (press 0 to go back): ");
         String newName = scan.nextLine();
-        
+
         if (newName.equals("0")) {
             return; // Exit login method
         }
 
         System.out.print("Enter customer address: ");
         String newAddress = scan.nextLine();
-        
+
         do {
             System.out.print("Enter customer phone number: ");
             String newPhoneNo = scan.nextLine();
@@ -124,8 +124,6 @@ public class MemAccount {
         ds.writeFile();
     }
 
-    
-    
     //VALIDATIONS FOR MEM ACCOUNT
     public static boolean isValidID(String memID) {
         if (memID.length() != 6) {
