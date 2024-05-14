@@ -123,6 +123,47 @@ public class MemAccount {
         } while (check == -1);
         ds.writeFile();
     }
+    
+    public static void forgotPass(){
+        boolean loop = true, found = true, samePass;
+        
+        do{
+            System.out.print("Enter customer name (press 0 to go back): ");
+            String name = scan.nextLine();
+            if (name.equals("0")) {
+                return; // Exit login method
+            }
+            System.out.print("Enter customer IC number: ");
+            String icNo = scan.nextLine();
+            for (Member member : members){
+                if (name.equals(member.getName()) && icNo.equals(member.getIcNo())){
+                    do{
+                        
+                        System.out.print("Enter new customer password: ");
+                        String newPassword = scan.nextLine();
+                        System.out.print("Confirm password: ");
+                        String confirmPass = scan.nextLine();
+                        if (newPassword.equals(confirmPass)){
+                            member.setPassword(newPassword);
+                            System.out.println(name + " your password has been successfully changed.\n");
+                            samePass = true;
+                            found = true;
+                            loop = false;
+                            ds.writeFile();
+                        } else {
+                            System.out.println("Password not same. Please confirm it's correct.");
+                            samePass = false;
+                        }
+                        
+                    } while (!samePass);
+                } else {found = false;}
+            }            
+            if (!found){
+                System.out.println("Customer name or IC number is incorrect. Please Try Again.");
+            }
+        } while (loop);
+  
+    }
 
     //VALIDATIONS FOR MEM ACCOUNT
     public static boolean isValidID(String memID) {

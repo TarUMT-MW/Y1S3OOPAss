@@ -37,9 +37,12 @@ public class PointRewardSystem {
                         MemAccount.register();
                         break;
                     case 'c':
-                        Terms.displayTerms();
+                        MemAccount.forgotPass();
                         break;
                     case 'd':
+                        Terms.displayTerms();
+                        break;
+                    case 'e':
                         System.out.println("\nEXITING...\n");
                         success = true;
                         break;
@@ -57,8 +60,9 @@ public class PointRewardSystem {
         System.out.println("------------------------------");
         System.out.println("[A] Login");
         System.out.println("[B] Register");
-        System.out.println("[C] Display Terms");
-        System.out.println("[D] Exit Program");
+        System.out.println("[C] Forgot Password");
+        System.out.println("[D] Display Terms");
+        System.out.println("[E] Exit Program");
         System.out.print("Please pick a service: ");
     }
     public static void displayUserpage(){
