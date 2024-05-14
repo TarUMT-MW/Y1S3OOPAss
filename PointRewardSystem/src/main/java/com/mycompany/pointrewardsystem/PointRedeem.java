@@ -13,7 +13,7 @@ public class PointRedeem {
         System.out.println("Available Coupons for Redemption:");
         for (int i = 0; i < availableCoupons.size(); i++) {
             Coupon coupon = availableCoupons.get(i);
-            System.out.println("Coupon " + (i + 1) + ": " + coupon.getCouponName() + " - Price: " + coupon.getCouponPrice());
+            System.out.println("Coupon " + (i + 1) + ": " + coupon.getCouponName() + " - Points : " + coupon.getCouponPrice());
         }
     }
 
@@ -32,7 +32,7 @@ public class PointRedeem {
                 discountedPrice = totalPrice; // Default behavior
             }
             System.out.println("Coupon Redeemed: " + coupon.getCouponName());
-            System.out.println("Discounted Price: " + discountedPrice);
+            System.out.println("Discounted Price: RM " + discountedPrice);
         } else {
             System.out.println("Invalid coupon index! Please try again");
         }
@@ -40,14 +40,14 @@ public class PointRedeem {
 
     // Method to generate a list of example coupons
     public void generateExampleCoupons() {
-        availableCoupons.add(new FixedDiscount(10, "Coupon 1", "Terms and conditions for Coupon 1", "Fixed", 5.0, "C1", 5.0));
-        availableCoupons.add(new PercentageDiscount(20, "Coupon 2", "Terms and conditions for Coupon 2", "Percentage", 10.0, "C2", 10.0));
-        availableCoupons.add(new FixedDiscount(15, "Coupon 3", "Terms and conditions for Coupon 3", "Fixed", 7.0, "C3", 7.0));
-        availableCoupons.add(new PercentageDiscount(25, "Coupon 4", "Terms and conditions for Coupon 4", "Percentage", 15.0, "C4", 15.0));
-        availableCoupons.add(new FixedDiscount(12, "Coupon 5", "Terms and conditions for Coupon 5", "Fixed", 6.0, "C5", 6.0));
-        availableCoupons.add(new PercentageDiscount(22, "Coupon 6", "Terms and conditions for Coupon 6", "Percentage", 12.0, "C6", 12.0));
-        availableCoupons.add(new FixedDiscount(18, "Coupon 7", "Terms and conditions for Coupon 7", "Fixed", 8.0, "C7", 8.0));
-        availableCoupons.add(new PercentageDiscount(30, "Coupon 8", "Terms and conditions for Coupon 8", "Percentage", 20.0, "C8", 20.0));
+        availableCoupons.add(new FixedDiscount(10, "KFC Discount RM 10 voucher", "Terms and conditions for Coupon 1", "Fixed", 10.0, "C1", 10.0));
+        availableCoupons.add(new PercentageDiscount(100, "STARBUCKS Discount 20% voucher", "Terms and conditions for Coupon 2", "Percentage", 20.0, "C2", 20.0));
+        availableCoupons.add(new FixedDiscount(15, "MCDONALD Discount RM 15 voucher", "Terms and conditions for Coupon 3", "Fixed", 15.0, "C3", 15.0));
+        availableCoupons.add(new PercentageDiscount(125, "YUMMYCAFE Discount 25% voucher", "Terms and conditions for Coupon 4", "Percentage", 25.0, "C4", 25.0));
+        availableCoupons.add(new FixedDiscount(12, "MRDIY Discount RM 12 voucher", "Terms and conditions for Coupon 5", "Fixed", 12.0, "C5", 12.0));
+        availableCoupons.add(new PercentageDiscount(100, "AEON Discount 20% voucher", "Terms and conditions for Coupon 6", "Percentage", 20.0, "C6", 20.0));
+        availableCoupons.add(new FixedDiscount(18, "PAVILLION Discount RM 18 voucher", "Terms and conditions for Coupon 7", "Fixed", 18.0, "C7", 18.0));
+        availableCoupons.add(new PercentageDiscount(150, "PARKSON Discount 30% voucher", "Terms and conditions for Coupon 8", "Percentage", 30.0, "C8", 30.0));
     }
 
     // For testing purpose
@@ -59,6 +59,6 @@ public class PointRedeem {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Choose a coupon to redeem (enter index): ");
         int couponIndex = scanner.nextInt();
-        redeem.redeemCoupon(couponIndex - 1, 50); // Assuming total price is 50
+        redeem.redeemCoupon(couponIndex - 1, 50); // Assuming total points is 50
     }
 }
